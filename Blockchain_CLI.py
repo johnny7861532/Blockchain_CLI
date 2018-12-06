@@ -99,7 +99,7 @@ def stopICON():
     click.echo(click.style('Node is kill',bg='black', fg='white'))
     
 @Blockchain.command(help="Using ICON template ABCToken to test simple contract.")
-def testICONCOntract():
+def ICONContracttest():
     click.echo(click.style('ICON', fg='green', blink=True, bold=True))
     click.echo(click.style('contract depolying....',bg='black', fg='white'))  
     subprocess.call(["tbears","init", "abc", "ABCToken"])
@@ -120,12 +120,18 @@ def getICONtx(tx):
     
 @Blockchain.command(help="Get the contract api")
 @click.argument('tx')  
-def getICONContractapi(tx):
+def getICONapi(tx):
     click.echo(click.style('ICON', fg='green', blink=True, bold=True))
     click.echo(click.style('get contract api:',bg='black', fg='white'))  
     subprocess.call(["tbears","scoreapi",tx])
     
-
+@Blockchain.command(help="Run the unittest of contract")
+@click.argument('project')  
+def ICONUnittest(project):
+    click.echo(click.style('ICON', fg='green', blink=True, bold=True))
+    click.echo(click.style('testing ICON contract',bg='black', fg='white'))  
+    subprocess.call(["tbears","test",project])
+    
     
     
 
