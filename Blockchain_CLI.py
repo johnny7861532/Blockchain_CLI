@@ -9,6 +9,7 @@ Created on Wed Dec  5 10:33:18 2018
 
 import click
 import subprocess
+import platform
 
 
 
@@ -23,6 +24,7 @@ def Blockchain():
     Very simple CLI to start a different protocol from local.
     Supporting NEO and ICON.
     """
+    systemOS
     pass
 
 
@@ -132,8 +134,17 @@ def ICONUnittest(project):
     click.echo(click.style('testing ICON contract',bg='black', fg='white'))  
     subprocess.call(["tbears","test",project])
     
-    
-    
+
+def systemOS():
+    osPlatform = platform.system()
+    click.echo(click.style(osPlatform , fg='green', blink=True, bold=True)) 
+    return osPlatform
+ 
+@Blockchain.command(help="Check OS System")
+def checkOS():
+    osPlatform = platform.system()
+    click.echo(click.style(osPlatform , fg='green', blink=True, bold=True)) 
+    click.echo(click.style("Mac:Darwin , Linux: Linux, Windows: Windows", fg='white', bold=True))
 
 if __name__ == '__main__':
     """                                                                        
